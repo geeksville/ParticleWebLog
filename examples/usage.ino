@@ -1,6 +1,6 @@
 // Example usage for ParticleWebLog library by kevinh@geeksville.com.
 
-#include "lib/src/ParticleWebLog/ParticleWebLog.h"
+#include <ParticleWebLog.h>
 
 // Install our logger
 ParticleWebLog particleWebLog;
