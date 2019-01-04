@@ -4,8 +4,13 @@ A Particle library for remote logging via publish().  And example config
 for loggly.com.
 
 I wrote this tiny logging framework because I wanted something that would allow
-remote logging but use **very** little FLASH space.  It is also nice that log
-messages are not sent in cleartext (they are inside the particle encrypted link).
+remote logging but use **very** little FLASH space. 
+
+Other benefits:
+
+* Messages are not sent in cleartext (they are inside the particle encrypted link).
+* Because this library doesn't use UDP, it is probably a more resistant to carrier
+throttling on cellphone networks (i.e. for the Electron)
 
 ## Usage
 
