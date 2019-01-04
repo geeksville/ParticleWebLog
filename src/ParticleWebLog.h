@@ -12,7 +12,7 @@
 /// You can use this as any other LogHandler - Initialize this class as a global, then call Log.info() and friends.
 class ParticleWebLog : public LogHandler {
     String m_name;
-    int m_publishing; // a flag to prevent recursion
+    int m_publishing; // a counting semaphore to prevent recursion
 
 public:
 /// Initialize the log handler.

@@ -4,7 +4,8 @@ A Particle library for remote logging via publish().  And example config
 for loggly.com.
 
 I wrote this tiny logging framework because I wanted something that would allow
-remote logging but use **very** little FLASH space.
+remote logging but use **very** little FLASH space.  It is also nice that log
+messages are not sent in cleartext (they are inside the particle encrypted link).
 
 ## Usage
 
@@ -40,7 +41,7 @@ service.  Most any service that has a way to accept HTTP posts of log messages s
 Here is an example using loggly.com:
 
 * Go to loggly.com and create a free account (you can pick any domain name).
-* Go to the console for your domain: https://geeksville.loggly.com/sources/setup/https
+* Go to the console for your domain: https://yourdomain.loggly.com/sources/setup/https
 and setup an HTTPS log source.  It will give you an URL that looks approximately
 like this: https://logs-01.loggly.com/inputs/XXXXXXXX-76a8-4af5-a967-XXXXXXXXXXXX/tag/http/.
 * Go to the Particle.io web console and click on "Integrations / New Integration / Webhook".
@@ -65,7 +66,7 @@ click it to test that the Particle server is now able to talk with Loggly.
 
 I will happily accept pull requests and respond to issues raised in github.
 
-Thanks to @barakewi for his [Papertrail library](https://github.com/barakwei/ParticlePapertrail) which was unsed
+Thanks to @barakewi for his [Papertrail library](https://github.com/barakwei/ParticlePapertrail) which was used
 as a template to create this library.
 
 ## LICENSE
