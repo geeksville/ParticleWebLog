@@ -15,10 +15,12 @@ void ParticleWebLog::log(String message) {
     //String packet = String::format("<22>1 %s %s %s - - - %s", time.c_str(), m_system.c_str(), m_app.c_str(), message.c_str());
 
     // Just in case someone calls Log.foo from inside publish we don't want to recurse
-    if(!m_publishing) {
-        m_publishing++;
-        Particle.publish(m_name, message, PRIVATE);
-        m_publishing--;
+    SINGLE_THREADED_BLOCK() {
+        if(!m_publishing) {
+            m_publishing++;
+            Particle.publish(m_name, message, PRIVATE);
+            m_publishing--;
+        }
     }
 }
 
