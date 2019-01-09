@@ -82,4 +82,4 @@ as a template to create this library.
 ## LICENSE
 Copyright 2019 kevinh@geeksville.com
 
-Licensed under the <insert your choice of license here> license
+Licensed under the MIT license
