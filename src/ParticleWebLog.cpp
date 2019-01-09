@@ -10,12 +10,12 @@ ParticleWebLog::ParticleWebLog(String name, LogLevel level,
 
 
 /// Send the log message to Papertrail.
-void ParticleWebLog::log(String message) {
+void ParticleWebLog::log(const char *category, String message) {
     //String time = Time.format(Time.now(), TIME_FORMAT_ISO8601_FULL);
     //String packet = String::format("<22>1 %s %s %s - - - %s", time.c_str(), m_system.c_str(), m_app.c_str(), message.c_str());
 
     // Just in case someone calls Log.foo from inside publish we don't want to recurse
-    if(!m_publishing) {
+    if(!m_publishing && strcmp(category, "app") == 0) {
         m_publishing++;
         Particle.publish(m_name, message, PRIVATE);
         m_publishing--;
@@ -53,12 +53,6 @@ const char* ParticleWebLog::extractFuncName(const char *s, size_t *size) {
 
 void ParticleWebLog::logMessage(const char *msg, LogLevel level, const char *category, const LogAttributes &attr) {
     String s;
-
-    if (category) {
-        s.concat("[");
-        s.concat(category);
-        s.concat("] ");
-    }
 
     // Source file
     if (attr.has_file) {
@@ -110,5 +104,5 @@ void ParticleWebLog::logMessage(const char *msg, LogLevel level, const char *cat
         s.concat(']');
     }
 
-    log(s);
+    log(category, s);
 }

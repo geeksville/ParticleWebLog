@@ -4,7 +4,7 @@ A Particle library for remote logging via publish().  And example config
 for loggly.com.
 
 I wrote this tiny logging framework because I wanted something that would allow
-remote logging but use **very** little FLASH space. 
+remote logging but use **very** little FLASH space.
 
 Other benefits:
 
@@ -34,9 +34,14 @@ This library merely registers a log provider that publishes each logged string
 as a particle publish event.  The events will be published using the name of
 your choice (defaults to "log").
 
-NOTE: This tiny library is built on top of Particle.publish, so you should not
+Limitations:
+
+* This tiny library is built on top of Particle.publish, so you should not
 print log message too quickly if you are using it.  It might drop messages if
 you send more than about 1 a second.
+* Third generation particle devices have lots of log messages from the system
+some of which seem to come out before publishing is legal.  So this log provider
+only logs "app" messages.
 
 ## Using web logging services
 
