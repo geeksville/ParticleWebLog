@@ -9,7 +9,7 @@ ParticleWebLog::ParticleWebLog(String name, LogLevel level,
 
 
 
-/// Send the log message to Papertrail.
+/// Publish the log message
 void ParticleWebLog::log(const char *category, String message) {
     //String time = Time.format(Time.now(), TIME_FORMAT_ISO8601_FULL);
     //String packet = String::format("<22>1 %s %s %s - - - %s", time.c_str(), m_system.c_str(), m_app.c_str(), message.c_str());
